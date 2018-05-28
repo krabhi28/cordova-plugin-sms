@@ -391,14 +391,9 @@ extends CordovaPlugin {
                 if (id == -1) {
                     uri = Uri.parse(SMS_URI_INBOX);
                 }
-		try{    
-                Cursor cur = resolver.query(uri, null, null, null, "_id desc");
-		}
-   		catch (SecurityException securityException)
-   		{
-			//blank	
-		}	
-                if (cur != null) {
+		Cursor cur = resolver.query(uri, null, null, null, "_id desc");
+		//catch (SecurityException securityException)
+	        if (cur != null) {
                     int n = cur.getCount();
                     Log.d(LOGTAG, ("n = " + n));
                     if (n > 0 && cur.moveToFirst()) {
